@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ReviewController@show')->name('review.show');
+Route::get('/agendar', 'ReviewController@viewSchedule')->name('review.schedule');
+Route::post('/agendar/executar', 'ReviewController@store')->name('review.schedule.store');

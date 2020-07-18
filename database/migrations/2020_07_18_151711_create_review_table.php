@@ -18,9 +18,9 @@ class CreateReviewTable extends Migration
             $table->unsignedBigInteger('materia');
             $table->string('assunto');
             $table->string('anotacoes');
-            $table->date('revisao');
-            $table->date('feito');
-            $table->enum('status', ['on', 'off']);
+            $table->date('datarevisao');
+            $table->date('dataconclusao');
+            $table->enum('status', ['feita', 'pendente']);
             $table->timestamps();
 
             $table->foreign('materia')->references('id')->on('disciplines')->onDelete('cascade');
