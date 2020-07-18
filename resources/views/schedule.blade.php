@@ -17,6 +17,7 @@
               @csrf
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Agendamento</h5>
+                <p>Hoje: {{date('d-m-Y')}}</p>
                 <a href="{{route('review.show')}}">
                     <button type="button" class="close">
                         <span aria-hidden="true">&#9754;</span>
@@ -38,7 +39,7 @@
                     <div>
                         <p>
                             Materia:
-                            <select name="materia" id="materia" required>
+                            <select name="materia" id="materia" class="form-control" required>
                                 @foreach ($materias as $materia)
                                     <option value="{{$materia->id}}">{{$materia->nome}}</option>    
                                 @endforeach
@@ -49,14 +50,14 @@
                     <p>
                         Assunto:
                     </p>
-                        <textarea name="assunto" id="assunto" cols="20" rows="2" placeholder="ex: figuras de linguagem" required></textarea>
+                        <textarea name="assunto" id="assunto" cols="20" rows="2" class="form-control" placeholder="ex: figuras de linguagem" required></textarea>
                     <p>
                         Anotacoes:
                     </p>
-                        <textarea name="anotacao" id="anotacao" cols="20" rows="4" placeholder="ex: revisar apenas conjugacao dos verbos" required></textarea>
+                        <textarea name="anotacao" id="anotacao" cols="20" rows="4" class="form-control" placeholder="ex: revisar apenas conjugacao dos verbos" required></textarea>
                     
                     <p>
-                        Data da revisao: <input type="date" name="datarevisao" id="datarevisao" required>
+                        Data da revisao: <input type="date" name="datarevisao" id="datarevisao" class="form-control" required>
                     </p>
                     
 
@@ -64,6 +65,7 @@
                 <div class="modal-footer">
                 <button type="submit" class="btn btn-outline-success">Agendar!</button>
                 <button type="reset" class="btn btn-outline-info">Limpar</button>
+                <a href="{{route('review.show')}}"><button type="button" class="btn btn-outline-danger">&#9166; voltar</button></a>
                 </div>
             </form>
       </div>

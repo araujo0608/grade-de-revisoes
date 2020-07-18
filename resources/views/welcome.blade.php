@@ -17,8 +17,8 @@
 
     <div class="container text-center">
         <a href="{{route('review.schedule')}}"><button class="btn btn-warning btn-sm float-left" id="novarevisao">Nova Revisao &#9998;</button></a>
-        <a href=""><button class="btn btn-warning btn-sm">Historico de revisoes &#9778;</button></a>
-        <a href=""><button class="btn btn-warning btn-sm float-right">Add disciplina &#10000;</button></a>
+        <a href="{{route('review.schedule.completed')}}"><button class="btn btn-warning btn-sm" id="historico">Revisoes concluidas &#9778;</button></a>
+        <a href="{{route('disciplines')}}"><button class="btn btn-warning btn-sm float-right" id="disciplina">Add disciplina &#10000;</button></a>
     </div>
     
     <br>
@@ -33,7 +33,7 @@
             document.getElementById('novarevisao').style.color = "white";
         </script>
     @else
-    <table border="2" class="table table-sm table-hover table-dark text-center">
+    <table class="table table-sm table-hover table-dark text-center">
         <tr>
             <th>Materia</th>
             <th>Assunto</th>
@@ -52,7 +52,15 @@
                 <td>{{date('d-m-Y', strtotime($revisao->revisao))}}</td>
                 <td>{{date('d-m-Y', strtotime($revisao->conclusao))}}</td>
                 <td>{{$revisao->status}}</td>
-                <td><button class="btn btn-success btn-sm">&#10003;</button></td>
+                <td>
+                    <form action="{{route('review.complete')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="idmateria" value="{{$revisao->idmateria}}">
+                        <input type="hidden" name="assunto" value="{{$revisao->assunto}}">
+                        <input type="hidden" name="revisao" value="{{$revisao->revisao}}">
+                        <button type="submit" class="btn btn-success btn-sm">concluir &#10003;</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>
