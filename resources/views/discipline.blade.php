@@ -50,11 +50,11 @@
 
                             <div class="col-lg">
                                 <table class="table table-sm table-hover table-dark text-center">
-                                    <tr>
+                                    <tr class="bg-success">
                                         <th>Cadastradas</th>
                                     </tr>
                                     @foreach ($materias as $materia)
-                                        <tr>
+                                        <tr class="bg-success">
                                             <td>{{$materia->nome}}</td>
                                         </tr>
                                     @endforeach
