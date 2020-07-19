@@ -24,7 +24,7 @@ class DisciplineController extends Controller
     public function store(Request $request){
         if($request){
 
-            if(DB::table('disciplines')->where('nome', '=', $request->nome)){
+            if(DB::table('disciplines')->where('nome', '=', $request->nome)->first()){
                 return redirect()->route('disciplines')->withInput()->withErrors(['Materia ja existe!']);
             }
 
