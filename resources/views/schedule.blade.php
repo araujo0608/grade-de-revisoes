@@ -99,6 +99,7 @@
 
         today = yyyy+'-'+mm+'-'+dd;
         document.getElementById("datarevisao").setAttribute("min", today);
+        
     </script>
 </body>
 </html>

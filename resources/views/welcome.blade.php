@@ -36,7 +36,7 @@
     @else
     <table class="table table-sm table-hover table-dark text-center">
         <tr>
-            <th>Materia</th>
+            <th scope="col">Materia</th>
             <th>Assunto</th>
             <th>Anotacoes</th>
             <th>Data da revisao</th>
@@ -46,23 +46,43 @@
         </tr>
 
         @foreach ($revisoes as $revisao)
-            <tr>
-                <td>{{$revisao->materia}}</td>
-                <td>{{$revisao->assunto}}</td>
-                <td>{{$revisao->anotacoes}}</td>
-                <td>{{date('d-m-Y', strtotime($revisao->revisao))}}</td>
-                <td>{{date('d-m-Y', strtotime($revisao->conclusao))}}</td>
-                <td>{{$revisao->status}}</td>
-                <td>
-                    <form action="{{route('review.complete')}}" method="post">
-                        @csrf
-                        <input type="hidden" name="idmateria" value="{{$revisao->idmateria}}">
-                        <input type="hidden" name="assunto" value="{{$revisao->assunto}}">
-                        <input type="hidden" name="revisao" value="{{$revisao->revisao}}">
-                        <button type="submit" class="btn btn-success btn-sm">concluir &#10003;</button>
-                    </form>
-                </td>
-            </tr>
+        @if(strtotime($revisao->revisao) < strtotime(date('Y-m-d')))
+        <tr class="bg-danger">
+            <td>{{$revisao->materia}}</td>
+            <td>{{$revisao->assunto}}</td>
+            <td>{{$revisao->anotacoes}}</td>
+            <td>{{date('d-m-Y', strtotime($revisao->revisao))}}</td>
+            <td>Revisao atrasada!</td>
+            <td>{{$revisao->status}}</td>
+            <td>
+                <form action="{{route('review.complete')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="idmateria" value="{{$revisao->idmateria}}">
+                    <input type="hidden" name="assunto" value="{{$revisao->assunto}}">
+                    <input type="hidden" name="revisao" value="{{$revisao->revisao}}">
+                    <button type="submit" class="btn btn-success btn-sm">concluir &#10003;</button>
+                </form>
+            </td>
+        </tr>
+        @else
+        <tr>
+            <td>{{$revisao->materia}}</td>
+            <td>{{$revisao->assunto}}</td>
+            <td>{{$revisao->anotacoes}}</td>
+            <td>{{date('d-m-Y', strtotime($revisao->revisao))}}</td>
+            <td>{{date('d-m-Y', strtotime($revisao->conclusao))}}</td>
+            <td>{{$revisao->status}}</td>
+            <td>
+                <form action="{{route('review.complete')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="idmateria" value="{{$revisao->idmateria}}">
+                    <input type="hidden" name="assunto" value="{{$revisao->assunto}}">
+                    <input type="hidden" name="revisao" value="{{$revisao->revisao}}">
+                    <button type="submit" class="btn btn-success btn-sm">concluir &#10003;</button>
+                </form>
+            </td>
+        </tr>
+        @endif
         @endforeach
     </table>
     @endif
