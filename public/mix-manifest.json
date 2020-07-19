@@ -1,5 +1,6 @@
 {
-    "/site/style.css": "/site/style.css",
-    "/site/jquery.js": "/site/jquery.js",
-    "/site/bootstrap.js": "/site/bootstrap.js"
+    "/site/style.css": "/site/style.css?id=ded1d5f6fe036c989f25",
+    "/site/jquery.js": "/site/jquery.js?id=23c7c5d2d1317508e807",
+    "/site/bootstrap.js": "/site/bootstrap.js?id=4d5e7e6ccbe7360bc74e",
+    "/site/css/welcome.css": "/site/css/welcome.css?id=d41d8cd98f00b204e980"
 }

@@ -23,4 +23,9 @@ mix
     .scripts(
         'node_modules/bootstrap/dist/js/bootstrap.bundle.js', // Origem
         'public/site/bootstrap.js'  // Destino
-        );
+        )
+    .styles(
+        ['resources/views/css/welcome.css'],
+        'public/site/css/welcome.css'
+    )
+    .version();
